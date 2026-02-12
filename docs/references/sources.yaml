@@ -1,0 +1,176 @@
+meta:
+  version: 1
+  generated_on: "2026-02-11"
+  generated_by: "codex"
+  verification_policy:
+    - "このファイルは執筆前の一次資料候補リスト。"
+    - "web検索で見つけた情報は未検証扱い。本文に断定で入れる前に一次資料本文を確認する。"
+
+sources:
+  - chapter: "序章: この本の問い"
+    source_id: "S-INTRO-001"
+    title: "Bitcoin: A Peer-to-Peer Electronic Cash System"
+    authors: ["Satoshi Nakamoto"]
+    year: 2008
+    source_type: "primary"
+    url: "https://bitcoin.org/bitcoin.pdf"
+    accessed: "2026-02-11"
+    supports: |
+      中央裁定者なしで電子取引を成立させる、という問題設定そのものを一次資料で確認できる。
+      trusted third party を不要化する目的と、取引順序を共有する必要性が明示されている。
+      「何を解く技術か」を序章で定義する主張の土台として使える。
+
+  - chapter: "第1章: なぜ順序が必要か"
+    source_id: "S-CH01-001"
+    title: "Bitcoin: A Peer-to-Peer Electronic Cash System"
+    authors: ["Satoshi Nakamoto"]
+    year: 2008
+    source_type: "primary"
+    url: "https://bitcoin.org/bitcoin.pdf"
+    accessed: "2026-02-11"
+    supports: |
+      二重支払い問題と「先に受理された取引を決める必要」が Section 2 で定義される。
+      Section 3 の timestamp server が、順序情報を公開履歴として固定する狙いを示している。
+      第1章の「順序がないと二重支払いを防げない」という主張を直接支える。
+
+  - chapter: "第2章: 中央裁定者ありの世界"
+    source_id: "S-CH02-001"
+    title: "Visa Core Rules and Visa Product and Service Rules"
+    organization: "Visa"
+    publication_date: "2025-10-18"
+    source_type: "primary"
+    url: "https://usa.visa.com/content/dam/VCOM/download/about-visa/visa-rules-public.pdf"
+    accessed: "2026-02-11"
+    supports: |
+      Issuer / Acquirer / Merchant を前提に、Authorization・Clearing・Settlement の段階が明記される。
+      取引処理がネットワーク運営者のルール体系で管理されることを一次資料として示せる。
+      「中央主体が台帳処理と裁定を担う」説明の根拠に使える。
+
+  - chapter: "第3章: 中央裁定者なしで起きる困難"
+    source_id: "S-CH03-001"
+    title: "Time, Clocks, and the Ordering of Events in a Distributed System"
+    authors: ["Leslie Lamport"]
+    year: 1978
+    source_type: "primary"
+    url: "https://cacm.acm.org/research/time-clocks-and-the-ordering-of-events-in-a-distributed-system/"
+    accessed: "2026-02-11"
+    supports: |
+      分散系での happened-before は部分順序であり、観測だけでは全順序が自明でないことを示す。
+      論理時計による順序付けの必要性が、中央裁定者なしの難しさを理論的に補強する。
+      第3章の「誰の観測を正とするかが不明」という主張に直接対応する。
+
+  - chapter: "第4章: P2Pネットワークと伝播遅延"
+    source_id: "S-CH04-001"
+    title: "Information Propagation in the Bitcoin Network"
+    authors: ["Christian Decker", "Roger Wattenhofer"]
+    year: 2013
+    source_type: "primary"
+    url: "https://www.research-collection.ethz.ch/handle/20.500.11850/74095"
+    doi: "10.1109/P2P.2013.6688704"
+    accessed: "2026-02-11"
+    supports: |
+      Bitcoin P2P の multi-hop 伝播と遅延が、台帳レプリカ間の一時的不一致を生むことを実測で扱う。
+      伝播遅延とフォーク発生の関係を検証対象として提示している。
+      第4章の「到達順の不一致が前提」という説明に一次研究を当てられる。
+
+  - chapter: "第5章: 取引データモデル（UTXO）"
+    source_id: "S-CH05-001"
+    title: "Transactions — Bitcoin Developer Guide"
+    organization: "Bitcoin.org"
+    source_type: "primary"
+    url: "https://developer.bitcoin.org/devguide/transactions.html"
+    accessed: "2026-02-11"
+    supports: |
+      入出力構造と UTXO の基本（output を後続 input が参照する形）が仕様レベルで示される。
+      1つの UTXO は一度しか消費できない制約が、二重支払い防止の実装面を支える。
+      第5章の「残高ではなく未使用出力集合を追跡する」主張の一次根拠になる。
+
+  - chapter: "第6章: ブロックとチェーン"
+    source_id: "S-CH06-001"
+    title: "Block Chain — Bitcoin Developer Reference"
+    organization: "Bitcoin.org"
+    source_type: "primary"
+    url: "https://developer.bitcoin.org/reference/block_chain.html"
+    accessed: "2026-02-11"
+    supports: |
+      ブロックヘッダの項目、前ブロックハッシュ連結、Merkle root 構成手順が仕様として確認できる。
+      「履歴を検証可能な形で固定する」仕組みを、データ構造レベルで説明できる。
+      第6章のメインメッセージに対する直接的な一次資料となる。
+
+  - chapter: "第7章: Proof of Work と難易度調整"
+    source_id: "S-CH07-001"
+    title: "Bitcoin: A Peer-to-Peer Electronic Cash System"
+    authors: ["Satoshi Nakamoto"]
+    year: 2008
+    source_type: "primary"
+    url: "https://bitcoin.org/bitcoin.pdf"
+    accessed: "2026-02-11"
+    supports: |
+      Section 4 が PoW の目的と、改ざんに必要な再計算コストの増大を説明している。
+      難易度を移動平均で調整し、生成ペースを保つ考え方が一次資料に明示される。
+      第7章の PoW と難易度調整の役割説明を直接支えられる。
+
+  - chapter: "第8章: 合意の収束とフォーク"
+    source_id: "S-CH08-001"
+    title: "Block Chain — Bitcoin Developer Guide"
+    organization: "Bitcoin.org"
+    source_type: "primary"
+    url: "https://developer.bitcoin.org/devguide/block_chain.html"
+    accessed: "2026-02-11"
+    supports: |
+      同時発見で分岐が生じること、ノードがより作業量の大きいチェーンへ収束することが記述される。
+      stale block の扱いと fork 解消の流れが、実装寄りの説明として整理されている。
+      第8章の「一時分岐は起こるが収束する」という主張の一次根拠に使える。
+
+  - chapter: "第9章: インセンティブと攻撃コスト"
+    source_id: "S-CH09-001"
+    title: "Bitcoin: A Peer-to-Peer Electronic Cash System"
+    authors: ["Satoshi Nakamoto"]
+    year: 2008
+    source_type: "primary"
+    url: "https://bitcoin.org/bitcoin.pdf"
+    accessed: "2026-02-11"
+    supports: |
+      Section 6 で coinbase 報酬と手数料によるインセンティブ設計が説明される。
+      正直行動と不正行動の利得比較という形で、経済的安全性の考え方が提示される。
+      第9章の「報酬設計が実効性を支える」主張の中核根拠になる。
+
+  - chapter: "第10章: 限界と運用上の注意"
+    source_id: "S-CH10-001"
+    title: "BIP 32: Hierarchical Deterministic Wallets"
+    authors: ["Pieter Wuille"]
+    publication_date: "2012-02-11"
+    source_type: "primary"
+    url: "https://bips.dev/32/"
+    accessed: "2026-02-11"
+    supports: |
+      シードから鍵を階層導出する仕様と、公開鍵のみ共有する運用分離の考え方を一次仕様で確認できる。
+      鍵管理の設計要件（共有範囲・漏えい影響・バックアップ運用）を具体化する材料になる。
+      第10章のセルフカストディ実務の前提整理に使える。
+
+  - chapter: "第10章: 限界と運用上の注意"
+    source_id: "S-CH10-002"
+    title: "Maximal extractable value (MEV)"
+    organization: "ethereum.org"
+    source_type: "primary"
+    url: "https://ethereum.org/developers/docs/mev"
+    page_last_update: "2025-10-22"
+    accessed: "2026-02-11"
+    supports: |
+      取引の inclusion / exclusion / ordering から追加価値が生じる MEV の定義を公式ドキュメントで確認できる。
+      MEV がユーザー体験とコンセンサス安全性に与える影響（再編成インセンティブ等）を整理している。
+      第10章で「順序依存リスク」を説明する際の一次資料として有用。
+
+  - chapter: "終章: 何を理解したか"
+    source_id: "S-OUTRO-001"
+    title: "RFC 9293: Transmission Control Protocol (TCP)"
+    organization: "IETF"
+    publication_date: "2022-08"
+    source_type: "primary"
+    url: "https://www.rfc-editor.org/rfc/rfc9293"
+    doi: "10.17487/RFC9293"
+    accessed: "2026-02-11"
+    supports: |
+      分散通信基盤で「信頼性・順序・再送」をどう定義するかの標準仕様を確認できる。
+      ブロックチェーン固有の議論と汎用ネットワーク層の責務を切り分ける比較軸になる。
+      終章の評価軸（どの層で何を保証するか）を整理する補助一次資料として使える。

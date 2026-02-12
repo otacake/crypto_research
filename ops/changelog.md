@@ -1,0 +1,32 @@
+- 2026-02-11: PDCA 1回目として `序章: この本の問い` を新規作成。
+- Checkで抽出した混乱点（主語の曖昧さ・長文・次章接続の抽象度）を根拠に Act を実施。
+- 文字数を `ops/budget.md` 基準で調整し、最終 `count(no-whitespace)=2706` で PASS。
+- 2026-02-11: PDCAで序章〜第3章を対象にDo/Check/Actを実施し、各章本文を要件順（問題→要件→仕組み接続）で調整。
+- Readerレビューを `reviews/2026-02-11/*.reader.md` に作成し、混乱点（用語密度・終盤反復・接続明確化）を章ごとに記録。
+- Actで用語初出の分割定義、反復短文の圧縮、次章接続文の明確化を最小修正で反映。
+- 文字数最終値（no-whitespace）は序章2792 / 第1章4996 / 第2章4549 / 第3章5407で、`ops/budget.md` の許容レンジ内。
+- 2026-02-11: PDCAを序章〜第3章で再実施し、`ops/outline.md`（00-1〜03-4）と `ops/claims.md`（C-01〜C-16）に合わせて本文を全面改稿。
+- Checkとして `reviews/2026-02-11/*.reader.md` を更新し、文字数判定（reader-length-check実行＋budget表レンジ手動判定）と人間らしさA〜E/G〜Rを章ごとに記録。
+- Actで終盤の短文反復を圧縮し、接続文を説明形へ統合して可読性を改善。
+- 最終 `count(no-whitespace)` は 序章2723 / 第1章4963 / 第2章4521 / 第3章5426 で、各章とも `ops/budget.md` 許容レンジ内。
+- 2026-02-12: PDCAを第4章〜終章で実施し、`ops/outline.md`（04-1〜11-4）と`ops/claims.md`（C-17〜C-48）に整合するよう本文を全面改稿。
+- Checkとして `reviews/2026-02-12/*.reader.md` を新規作成し、reader-length-check実行結果（既知のtarget=4不整合を併記）と人間らしさ判定を記録。
+- Actで章末の反復短文・曖昧終端を統合段落へ置換し、最終 `count(no-whitespace)` は第4章5875 / 第5章6336 / 第6章6300 / 第7章6758 / 第8章6314 / 第9章5871 / 第10章5028 / 終章3153 で全章PASS。
+- 2026-02-12: 全章PDCAの実行方針で、序章〜第3章を全面書き直し（問い設定・IT基礎語導入・破綻例・橋渡し・要件抽出を再構成）。
+- Checkとして `reviews/2026-02-12/00_*.reader.md`〜`03_*.reader.md` を新規作成し、既存 `04_*.reader.md`〜`11_*.reader.md` と合わせて全章レビューを揃えた。
+- Actでレビュー指摘（終端重複・責任主体の曖昧さ・観測軸不足）を反映し、最終 `count(no-whitespace)` は序章3085 / 第1章5036 / 第2章4538 / 第3章5459（各章レンジ内）。
+- 追加要望に対応し、chapters結合の生成物として `docs/manuscript/master.md` を自動生成した（手編集なし）。
+- 2026-02-12: ユーザー指示に合わせ、全12章（序章〜終章）をPDCA対象として再編し、章ごとにDo/Check/Actを実施（章本文は全面改稿方針）。
+- Checkとして `reviews/2026-02-12/00_*.reader.md`〜`11_*.reader.md` を揃え、reader-length-check実行結果（既知のtarget=4不整合）と手動レンジ判定を併記。
+- Actで導入重複・終端冗長・責任主体の曖昧さ・観測軸不足を反映し、最終 no-whitespace は全章レンジ内、総量は `66,500` に調整。
+- 追加要望に対応し、`docs/manuscript/master.md` を chapters から再生成した（生成のみ、手編集なし）。
+- 2026-02-12: 全12章の最終調整として、章別レンジを維持したまま全体 no-whitespace 総量を `66,500`（予算許容下限）へ引き上げ。
+- `reviews/2026-02-12/04_*.reader.md`〜`11_*.reader.md` も最新本文の字数に合わせて更新し、全章レビューを統一フォーマット化。
+- Do/Check/Actの反映結果として、序章〜終章すべてで出典タグ/要検証表記を維持し、章末の結論・補足接続を再整理。
+- 最終版 `docs/manuscript/master.md` を chapters から再生成（最新版内容へ更新）。
+
+- 2026-02-12: 出典運用の仕様を確定し、`AGENTS.md` と `ops/blueprint.md` に「引用タグIDは `docs/references/sources.yaml` と一致」「未確証は要検証」「master参考文献は自動生成」を明記。
+- `docs/manuscript/master.md` を再生成し、chapters結合に加えて `docs/references/sources.yaml` 由来の「参考文献」セクションを末尾へ自動付与。
+- Mermaid配置基準を `ops/blueprint.md` と `roles/writer/AGENTS.md` に追加（全章最低1図、第3章〜第8章は最低2図）。
+- 公開向けルールとして、環境依存の絶対パス禁止を `AGENTS.md` に追加し、`roles/reader/AGENTS.md` の文字数チェック例を `$env:USERPROFILE` 参照へ変更。
+- `ops/budget.md` を 80,000〜90,000字前提へ更新し、章別目標を再配分（合計85,000字）。
