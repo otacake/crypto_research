@@ -1,0 +1,124 @@
+version: 1
+updated_on: "2026-02-14"
+terms:
+  - id: G-001
+    term: サーバー
+    en: server
+    level: basic_it
+    definition: 要求に対してデータや処理結果を返す側のコンピュータや機能。
+    first_chapter: 0
+  - id: G-002
+    term: クライアント
+    en: client
+    level: basic_it
+    definition: サーバーへ要求を送る側のソフトウェアや端末。
+    first_chapter: 0
+  - id: G-003
+    term: ノード
+    en: node
+    level: basic_it
+    definition: ネットワークに参加し、データの受信・送信・検証を行う単位。
+    first_chapter: 0
+  - id: G-004
+    term: レイテンシ
+    en: latency
+    level: basic_it
+    definition: 送信から受信までに生じる遅れ時間。
+    first_chapter: 0
+  - id: G-005
+    term: プロトコル
+    en: protocol
+    level: basic_it
+    definition: 通信や処理の手順を定めた共通ルール。
+    first_chapter: 0
+  - id: G-006
+    term: 分散システム
+    en: distributed system
+    level: core
+    definition: 複数の計算機が協調して1つの機能を提供するシステム。
+    first_chapter: 1
+  - id: G-007
+    term: 二重支払い
+    en: double spending
+    level: core
+    definition: 同じ資産を複数の相手へ重複して使おうとする問題。
+    first_chapter: 1
+  - id: G-008
+    term: 部分順序
+    en: partial order
+    level: core
+    definition: すべての要素の前後が決まるわけではない順序関係。
+    first_chapter: 3
+  - id: G-009
+    term: 全順序
+    en: total order
+    level: core
+    definition: すべての要素について前後関係が比較可能な順序関係。
+    first_chapter: 3
+  - id: G-010
+    term: UTXO
+    en: Unspent Transaction Output
+    level: blockchain
+    definition: まだ使われていない取引出力。Bitcoinで所有状態の単位として使う。
+    first_chapter: 5
+  - id: G-011
+    term: トランザクション
+    en: transaction
+    level: blockchain
+    definition: 資産移転を表すデータ単位。入力と出力から構成される。
+    first_chapter: 5
+  - id: G-012
+    term: ブロック
+    en: block
+    level: blockchain
+    definition: 複数の取引をまとめた検証単位。
+    first_chapter: 6
+  - id: G-013
+    term: ハッシュ
+    en: hash
+    level: blockchain
+    definition: 入力データから固定長の値を得る関数とその結果値。
+    first_chapter: 6
+  - id: G-014
+    term: Merkle Tree
+    en: Merkle Tree
+    level: blockchain
+    definition: ハッシュを木構造でまとめ、包含証明を効率化する仕組み。
+    first_chapter: 6
+  - id: G-015
+    term: Proof of Work
+    en: Proof of Work
+    level: blockchain
+    definition: 計算コストを課して履歴改ざんを難しくする仕組み。
+    first_chapter: 7
+  - id: G-016
+    term: 難易度調整
+    en: difficulty adjustment
+    level: blockchain
+    definition: ブロック生成間隔を安定させるために難易度を調整する仕組み。
+    first_chapter: 7
+  - id: G-017
+    term: フォーク
+    en: fork
+    level: blockchain
+    definition: 同時発見などでチェーン候補が一時的に分岐する現象。
+    first_chapter: 8
+  - id: G-018
+    term: 再編成
+    en: reorganization
+    short: reorg
+    level: blockchain
+    definition: 一度採用した枝から、別の枝へ履歴採択を切り替える処理。
+    first_chapter: 8
+  - id: G-019
+    term: インセンティブ
+    en: incentive
+    level: core
+    definition: 参加者行動を望ましい方向へ誘導する報酬や費用の設計。
+    first_chapter: 9
+  - id: G-020
+    term: MEV
+    en: Maximal Extractable Value
+    level: blockchain
+    definition: 取引の並べ替えや除外によって追加利得を得る現象。
+    first_chapter: 10

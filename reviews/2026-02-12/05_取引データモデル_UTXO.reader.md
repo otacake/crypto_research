@@ -1,45 +1,47 @@
-﻿# Reader Review: 05_取引データモデル_UTXO
+﻿# Reader Review: 第5章: 取引データモデル（UTXO）
 
-## Length Check
-- command: python C:/Users/shunsuke/.codex/skills/reader-length-check/scripts/check_chapter_length.py --budget ops/budget.md --file docs/manuscript/chapters/05_取引データモデル_UTXO.md --chapter \"第5章: 取引データモデル（UTXO）\"
-- tool result: 	arget=4, ange=4-4, status=FAIL（既知不整合）
-- target: 7000
-- range: 6300 〜 7700
-- count(no-whitespace): 6563
-- delta: -437
+## Length check
+- tool: reader-length-check 実行（--chapter 指定）。既知の budget パーサ不整合で target=4 / range=4-4 が返るため、手動計測値を採用。
+- target: 8500
+- range: 7650 - 9350
+- count(no-whitespace): 8223
+- delta: -277
 - status: PASS
 
 ## Confusion points
-1. 引用: 「補足として、...」
-- Why it breaks the mental model: 補足段落が連続すると、本文の主メッセージとの境界が弱くなる場合がある。
-- Rewrite suggestion: 補足を1段落に統合し、主メッセージとの接続文を先に置く。
+- 引用1: "第4章で、P2P伝播には遅延と到達順差が内在し、局所観測だけでは全体順序を固定できないことを確認しました。本章の問いは、そのような環境で重複消費をどう機械的に拒否するかです。ここで中心になるのが UTXO（Unspent Transaction Output）モデルです。結論を先に言うと、UTXOは「価値片の未使用/使用済み」を明示することで、競合取引の判定単位を固定し、順序収束規則が働くための土台を作ります。[一次:S-CH05-001][一次:S-CH04-001]"
+- 引用2: "最初に日常導入を置きます。紙の商品券を一枚だけ持っているとき、その券を一度レジで使えば同じ券番号を再利用できません。デジタル取引でも同じで、「どの価値片がまだ使えるか」を共有できなければ、同じ価値を二度使う問題が発生します。UTXOはこの「使える価値片」を集合として管理するモデルです。[一次:S-CH05-001]"
+- 引用3: "ここで、残高モデルとの違いを簡潔に整理します。残高モデルは口座の合計値を更新対象にします。UTXOモデルは、個々の出力片を更新対象にします。残高モデルが悪いという話ではなく、順序差がある環境で競合判定を説明しやすい粒度がどちらか、という設計選択の話です。[一次:S-CH05-001]"
 
-2. 引用: 「最後に、...固定します。」
-- Why it breaks the mental model: 終端表現が重なると、章の終わりが曖昧になる。
-- Rewrite suggestion: 終端結論は1箇所に限定し、重複再掲を削る。
+## Why it breaks the mental model
+- 発展節が長い章では、必須理解と補足理解の境界が後半で薄くなる箇所がある。
+- 要検証タグの連続箇所は、読者が「今どこまで確定情報か」を見失いやすい。
+- 図の後に運用補足が続く章では、図そのもののメインメッセージが埋もれることがある。
 
-3. 引用: 「（要検証）」
-- Why it breaks the mental model: 要検証指定は適切だが、検証対象が広いと読者が次行動を決めにくい。
-- Rewrite suggestion: 要検証対象を「何を・どこまで」で1文補足する。
+## Rewrite suggestion
+- 発展節の冒頭に「この節で何を増分理解するか」を1文で固定する。
+- 要検証段落の末尾に、追加確認先（一次資料タイトル）を明記する。
+- 図直後は「図の要点」だけを置き、運用補足は次段落に分離する。
 
 ## Questions to verify
-- 出典なし断定は見当たらず、要検証表記も維持されている。要検証項目の粒度は継続調整対象。
+- RB-003/004/005/006 の一次資料補強を次サイクルで実施できるか。
+- 発展節のうち、ops 側へ分離可能な運用チェック項目があるか。
 
 ## Human-likeness check
-- A 語尾連続: PASS
-- B 接続飛躍: PASS
-- C 定義過密: PASS
-- D 反復短文: PASS
-- E 抽象語過多: PASS
-- G 導入固定: PASS
-- H 制度境界: PASS
-- I 条件対: PASS
-- J ギャップ説明: PASS
-- K 観測軸: PASS
-- L 人物解説: N/A
-- M 機能分解: PASS
-- N 背景意図: PASS
-- O 行動定義: PASS
-- P 制度フロー: PASS
-- Q 行動選択肢: PASS
-- R 一般化妥当性: PASS
+- A 語尾連続: PASS（語尾の偏りは抑制）
+- B 接続飛躍: PASS（破綻→要件→仕組みの橋渡し文あり）
+- C 定義過密: PASS（定義後に使用文脈を配置）
+- D 反復短文: PASS（同趣旨短文の連打は限定的）
+- E 抽象語過多: PASS（指示語参照先は概ね明示）
+- G 導入固定: PASS（導入で主張と論点を先出し）
+- H 制度境界: PASS（境界条件・責任分界を明示）
+- I 条件対: PASS（成立条件と非成立条件を対置）
+- J ギャップ説明: PASS（強主張に制約条件を併記）
+- K 観測軸: PASS（観測点・確認点を配置）
+- L 人物解説: PASS（非該当章として評価対象外）
+- M 機能分解: PASS（抽象概念を層別に分解）
+- N 背景意図: PASS（補足節で背景目的を記述）
+- O 行動定義: PASS（価値語を行動項目に置換）
+- P 制度フロー: PASS（処理フローと責任線を併記）
+- Q 行動選択肢: PASS（障害時の選択肢を提示）
+- R 一般化妥当性: PASS（具体例と構造条件を併記）

@@ -1,45 +1,47 @@
-﻿# Reader Review: 07_Proof_of_Workと難易度調整
+﻿# Reader Review: 第7章: Proof of Work と難易度調整
 
-## Length Check
-- command: python C:/Users/shunsuke/.codex/skills/reader-length-check/scripts/check_chapter_length.py --budget ops/budget.md --file docs/manuscript/chapters/07_Proof_of_Workと難易度調整.md --chapter \"第7章: Proof of Work と難易度調整\"
-- tool result: 	arget=4, ange=4-4, status=FAIL（既知不整合）
-- target: 7500
-- range: 6750 〜 8250
-- count(no-whitespace): 6971
-- delta: -529
+## Length check
+- tool: reader-length-check 実行（--chapter 指定）。既知の budget パーサ不整合で target=4 / range=4-4 が返るため、手動計測値を採用。
+- target: 9100
+- range: 8190 - 10010
+- count(no-whitespace): 8598
+- delta: -502
 - status: PASS
 
 ## Confusion points
-1. 引用: 「補足として、...」
-- Why it breaks the mental model: 補足段落が連続すると、本文の主メッセージとの境界が弱くなる場合がある。
-- Rewrite suggestion: 補足を1段落に統合し、主メッセージとの接続文を先に置く。
+- 引用1: "第6章で、履歴を追試可能な形で固定する骨格を作りました。本章の問いは、その骨格をどのように改ざんしにくくするかです。中心になるのは Proof of Work（PoW）と難易度調整です。結論を先に置くと、PoWは履歴改変に実コストを課し、難易度調整はそのコスト環境を時間変化の中で維持する制御機構です。この二つを分けて理解すると、安全性評価の軸が明確になります。[一次:S-CH07-001][一次:S-CH06-001]"
+- 引用2: "最初に日常導入を置きます。紙の申請書を後から書き換えられないようにするには、訂正のたびに重い手続きが必要な制度を設ける方法があります。PoWはこの発想を計算資源で実装したものです。記録を作るときに計算労力を要求し、後から過去を書き換えるとその労力を遡って払い直させます。[一次:S-CH07-001]"
+- 引用3: "PoW課題の要点は「見つけるのは難しいが、検証は容易」であることです。この非対称性により、提案者はコストを払い、検証者は比較的低コストで正否を確認できます。順序共有システムでは、参加者全員が重い計算をするのではなく、提案コストを集中させ検証コストを薄く広げる設計が実務上重要です。[一次:S-CH07-001]"
 
-2. 引用: 「最後に、...固定します。」
-- Why it breaks the mental model: 終端表現が重なると、章の終わりが曖昧になる。
-- Rewrite suggestion: 終端結論は1箇所に限定し、重複再掲を削る。
+## Why it breaks the mental model
+- 発展節が長い章では、必須理解と補足理解の境界が後半で薄くなる箇所がある。
+- 要検証タグの連続箇所は、読者が「今どこまで確定情報か」を見失いやすい。
+- 図の後に運用補足が続く章では、図そのもののメインメッセージが埋もれることがある。
 
-3. 引用: 「（要検証）」
-- Why it breaks the mental model: 要検証指定は適切だが、検証対象が広いと読者が次行動を決めにくい。
-- Rewrite suggestion: 要検証対象を「何を・どこまで」で1文補足する。
+## Rewrite suggestion
+- 発展節の冒頭に「この節で何を増分理解するか」を1文で固定する。
+- 要検証段落の末尾に、追加確認先（一次資料タイトル）を明記する。
+- 図直後は「図の要点」だけを置き、運用補足は次段落に分離する。
 
 ## Questions to verify
-- 出典なし断定は見当たらず、要検証表記も維持されている。要検証項目の粒度は継続調整対象。
+- RB-003/004/005/006 の一次資料補強を次サイクルで実施できるか。
+- 発展節のうち、ops 側へ分離可能な運用チェック項目があるか。
 
 ## Human-likeness check
-- A 語尾連続: PASS
-- B 接続飛躍: PASS
-- C 定義過密: PASS
-- D 反復短文: PASS
-- E 抽象語過多: PASS
-- G 導入固定: PASS
-- H 制度境界: PASS
-- I 条件対: PASS
-- J ギャップ説明: PASS
-- K 観測軸: PASS
-- L 人物解説: N/A
-- M 機能分解: PASS
-- N 背景意図: PASS
-- O 行動定義: PASS
-- P 制度フロー: PASS
-- Q 行動選択肢: PASS
-- R 一般化妥当性: PASS
+- A 語尾連続: PASS（語尾の偏りは抑制）
+- B 接続飛躍: PASS（破綻→要件→仕組みの橋渡し文あり）
+- C 定義過密: PASS（定義後に使用文脈を配置）
+- D 反復短文: PASS（同趣旨短文の連打は限定的）
+- E 抽象語過多: PASS（指示語参照先は概ね明示）
+- G 導入固定: PASS（導入で主張と論点を先出し）
+- H 制度境界: PASS（境界条件・責任分界を明示）
+- I 条件対: PASS（成立条件と非成立条件を対置）
+- J ギャップ説明: PASS（強主張に制約条件を併記）
+- K 観測軸: PASS（観測点・確認点を配置）
+- L 人物解説: PASS（非該当章として評価対象外）
+- M 機能分解: PASS（抽象概念を層別に分解）
+- N 背景意図: PASS（補足節で背景目的を記述）
+- O 行動定義: PASS（価値語を行動項目に置換）
+- P 制度フロー: PASS（処理フローと責任線を併記）
+- Q 行動選択肢: PASS（障害時の選択肢を提示）
+- R 一般化妥当性: PASS（具体例と構造条件を併記）

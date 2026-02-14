@@ -59,10 +59,10 @@
 
 ## 出典・引用仕様（確定）
 - 出典管理の正本は `docs/references/sources.yaml` とする。
-- 本文の主張には、対応する出典タグを末尾に付ける（`[一次:S-xxx]` / `[二次:R-xxx]`）。
+- chapters本文の主張には、対応する出典タグを末尾に付ける（`[一次:S-xxx]` / `[二次:R-xxx]`）。
 - 断定できない主張は `[要検証:RB-xxx]` または「わからない」で明示する。
-- `docs/manuscript/master.md` は chapters 結合時に、末尾へ「参考文献」セクションを自動生成して付与する。
-- 参考文献セクションは `docs/references/sources.yaml` の `source_id` をキーに、書誌情報を一覧化する。
+- `docs/manuscript/master.md` は chapters 結合時に、タグを脚注記法（`[^ID]`）へ自動変換する。
+- `master.md` の脚注定義は `docs/references/sources.yaml`（S/R系）と `ops/research_backlog.md`（RB系）から自動生成する。
 
 ## Mermaid配置基準
 - 各章で最低1図を入れる。
