@@ -134,6 +134,17 @@ function Convert-CitationTagsToFootnotes {
   return $converted
 }
 
+function Remove-ChapterReferencesSection {
+  param([string]$Text)
+
+  # Remove per-chapter references block so master keeps a single consolidated references section.
+  return [regex]::Replace(
+    $Text,
+    '(?ms)\r?\n## 参考文献\s*\r?\n[\s\S]*$',
+    ''
+  ).TrimEnd()
+}
+
 function Get-CitedIdsInOrder {
   param([string]$Text)
 
@@ -155,7 +166,8 @@ if ($chapterFiles.Count -eq 0) {
 }
 
 $chapterBodies = foreach ($file in $chapterFiles) {
-  Get-Content -Raw -Encoding utf8 $file.FullName
+  $raw = Get-Content -Raw -Encoding utf8 $file.FullName
+  Remove-ChapterReferencesSection -Text $raw
 }
 $masterBody = ($chapterBodies -join "`r`n`r`n").TrimEnd()
 $masterBody = Convert-CitationTagsToFootnotes -Text $masterBody

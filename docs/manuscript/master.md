@@ -63,15 +63,6 @@ flowchart LR
 
 序章の結論は一つです。ブロックチェーン理解の入口は「何を発行するか」ではなく「どう順序を共有するか」です。この軸を保持して第1章へ進みます。[^S-INTRO-001]
 
-## 参考文献
-
-[^S-INTRO-001]: Satoshi Nakamoto, "Bitcoin: A Peer-to-Peer Electronic Cash System" (2008). https://bitcoin.org/bitcoin.pdf
-[^S-CH01-001]: Satoshi Nakamoto, "Bitcoin: A Peer-to-Peer Electronic Cash System" (2008). https://bitcoin.org/bitcoin.pdf
-[^S-CH02-001]: Visa, "Visa Core Rules and Visa Product and Service Rules" (2025-10-18). https://usa.visa.com/content/dam/VCOM/download/about-visa/visa-rules-public.pdf
-[^S-CH03-001]: Leslie Lamport, "Time, Clocks, and the Ordering of Events in a Distributed System" (1978). https://cacm.acm.org/research/time-clocks-and-the-ordering-of-events-in-a-distributed-system/
-[^S-CH04-001]: Christian Decker and Roger Wattenhofer, "Information Propagation in the Bitcoin Network" (2013). https://www.research-collection.ethz.ch/handle/20.500.11850/74095
-
-
 # 第1章: なぜ順序が必要か
 
 この章の目的は、順序がないと何が壊れるかを先に固定することです。ブロックチェーンの説明では、しばしば署名やハッシュの仕組みから始まりますが、順序の必要性を先に押さえないと、技術部品の意味が結びつきません。ここでは二重支払いを中心に、順序不在の破綻を日常例で確認し、最後に必要条件を抽出します。[^S-CH01-001]
@@ -192,13 +183,6 @@ flowchart LR
 
 この三時刻を分ける習慣は、第2章以降の比較でも効きます。中央型では時刻差を制度で吸収し、分散型では規則で吸収するため、どの層で差を処理したかを明確に書けるからです。
 
-## 参考文献
-
-[^S-CH01-001]: Satoshi Nakamoto, "Bitcoin: A Peer-to-Peer Electronic Cash System" (2008). https://bitcoin.org/bitcoin.pdf
-[^S-CH03-001]: Leslie Lamport, "Time, Clocks, and the Ordering of Events in a Distributed System" (1978). https://cacm.acm.org/research/time-clocks-and-the-ordering-of-events-in-a-distributed-system/
-[^S-CH04-001]: Christian Decker and Roger Wattenhofer, "Information Propagation in the Bitcoin Network" (2013). https://www.research-collection.ethz.ch/handle/20.500.11850/74095
-
-
 # 第2章: 中央裁定者ありの世界
 
 この章は、中央裁定者がいる決済世界を比較軸として整理します。目的は「中央型が良い/悪い」を決めることではなく、順序共有をどの機能で実現しているかを分解することです。分解せずに比較すると、ブロックチェーン側の説明も抽象論で終わります。[^S-CH02-001]
@@ -302,11 +286,6 @@ flowchart LR
 制度運用では、非常時の優先順位も明文化しておくべきです。たとえば「判定一貫性を優先して処理速度を一時的に落とす条件」と「可用性を優先して暫定判定を増やす条件」を切り分けます。優先順位が未定義だと、同じ障害でも判断が担当者依存になり、中央型の利点である統制性が失われます。
 
 この章の実践的な読み方は、機能一覧ではなく責任連鎖として追うことです。どの入力がどの部門で判定され、どの文言で利用者へ返され、どのログで監査されるかを一本の線で追跡できれば、中央裁定者ありの世界の強みと限界を同時に説明できます。
-
-## 参考文献
-
-[^S-CH02-001]: Visa, "Visa Core Rules and Visa Product and Service Rules" (2025-10-18). https://usa.visa.com/content/dam/VCOM/download/about-visa/visa-rules-public.pdf
-
 
 # 第3章: 中央裁定者なしで起きる困難
 
@@ -442,12 +421,6 @@ flowchart LR
 
 この変換ができると、中央裁定者なしの難しさを「避ける対象」ではなく「管理可能な設計対象」として扱えるようになります。
 この視点転換が、本章の実務的な到達点です。
-
-## 参考文献
-
-[^S-CH03-001]: Leslie Lamport, "Time, Clocks, and the Ordering of Events in a Distributed System" (1978). https://cacm.acm.org/research/time-clocks-and-the-ordering-of-events-in-a-distributed-system/
-[^S-CH04-001]: Christian Decker and Roger Wattenhofer, "Information Propagation in the Bitcoin Network" (2013). https://www.research-collection.ethz.ch/handle/20.500.11850/74095
-
 
 # 第4章: P2Pネットワークと伝播遅延
 
@@ -596,12 +569,6 @@ flowchart LR
 再現可能性は、P2P運用で最も重要な品質指標です。
 この基準が、改善判断のぶれを防ぎます。
 
-## 参考文献
-
-[^S-CH04-001]: Christian Decker and Roger Wattenhofer, "Information Propagation in the Bitcoin Network" (2013). https://www.research-collection.ethz.ch/handle/20.500.11850/74095
-[^S-CH03-001]: Leslie Lamport, "Time, Clocks, and the Ordering of Events in a Distributed System" (1978). https://cacm.acm.org/research/time-clocks-and-the-ordering-of-events-in-a-distributed-system/
-
-
 # 第5章: 取引データモデル（UTXO）
 
 この章の目的は、順序問題をデータ構造でどう扱うかを明確にすることです。第4章までで見た「観測順がずれる」という前提は、取引データの表現を誤ると吸収できません。Bitcoinは残高を直接更新するモデルではなく、未使用出力（UTXO）を消費するモデルで所有状態を表現します。ここに、二重消費排除と検証可能性を同時に満たす設計意図があります。[^S-CH05-001]
@@ -747,12 +714,6 @@ UTXOを実運用へ載せると、理論説明だけでは見えない課題が�
 通知文が統一されると、競合時の問い合わせ対応も安定します。
 運用手順と通知文を対で更新する運用が、再発防止の効果を高めます。
 ここまでで前半の土台は完成です。
-
-## 参考文献
-
-[^S-CH05-001]: Bitcoin.org, "Transactions — Bitcoin Developer Guide". https://developer.bitcoin.org/devguide/transactions.html
-[^S-CH01-001]: Satoshi Nakamoto, "Bitcoin: A Peer-to-Peer Electronic Cash System" (2008). https://bitcoin.org/bitcoin.pdf
-
 
 # 第6章: ブロックとチェーン
 
@@ -915,10 +876,6 @@ Merkle構造の実務価値もここにあります。全取引を毎回再取�
 - ハッシュ連結は改ざんコストを連鎖的に上げる。
 - Merkle構造は包含確認を効率化する。
 
-
-
-
-
 # 第7章: Proof of Work と難易度調整
 
 第6章までで、取引を検証可能な履歴として記録する骨格を作りました。本章の問いは、その履歴をどのように改ざんしにくくするかです。ここで扱う中心要素は、Proof of Work（PoW, 計算コスト証明）と難易度調整です。PoWは履歴を書き換える行為に計算コストを埋め込み、難易度調整はそのコスト水準を時間変化の中で維持する制御機構として働きます。[^S-CH07-001]
@@ -1062,13 +1019,6 @@ PoW運用の改善が遅れる最大要因は、指標がないことより会�
 ここを運用で守ることが重要です。[^S-CH07-001]
 継続監視を止めないでください。[^S-CH07-001]
 
-## 参考文献
-
-[^S-CH07-001]: Satoshi Nakamoto, "Bitcoin: A Peer-to-Peer Electronic Cash System" (2008). https://bitcoin.org/bitcoin.pdf
-[^S-CH08-001]: Bitcoin.org, "Block Chain — Bitcoin Developer Guide". https://developer.bitcoin.org/devguide/block_chain.html
-[^S-CH09-001]: Satoshi Nakamoto, "Bitcoin: A Peer-to-Peer Electronic Cash System" (2008). https://bitcoin.org/bitcoin.pdf
-
-
 # 第8章: 合意の収束とフォーク
 
 第7章で、履歴改ざんへコストを課す地盤としてPoWと難易度調整を整理しました。本章の問いは、観測差が残る状況で一時的に複数履歴が生まれたとき、どうやって全体を一本へ収束させるかです。ここで扱う中心要素は、フォーク発生、収束規則、再編成、実用確定性です。結論を先に置くと、フォークは異常ではなく中間状態であり、品質を決めるのは「分岐の有無」より「分岐後の戻し方」です。[^S-CH08-001][^S-CH04-001]
@@ -1209,14 +1159,6 @@ flowchart LR
 速い復旧が信頼を守ります。[^S-CH08-001]
 記録は継続してください。[^S-CH08-001]
 
-## 参考文献
-
-[^S-CH08-001]: Bitcoin.org, "Block Chain — Bitcoin Developer Guide". https://developer.bitcoin.org/devguide/block_chain.html
-[^S-CH04-001]: Christian Decker and Roger Wattenhofer, "Information Propagation in the Bitcoin Network" (2013). https://www.research-collection.ethz.ch/handle/20.500.11850/74095
-[^S-CH09-001]: Satoshi Nakamoto, "Bitcoin: A Peer-to-Peer Electronic Cash System" (2008). https://bitcoin.org/bitcoin.pdf
-[^S-OUTRO-001]: IETF, "RFC 9293: Transmission Control Protocol (TCP)" (2022). https://www.rfc-editor.org/rfc/rfc9293
-
-
 # 第9章: インセンティブと攻撃コスト
 
 第8章で、分岐が起きる前提でも収束規則で履歴を一本化できることを確認しました。本章の問いは、その規則を参加者がなぜ守り続けるかです。技術仕様が正しくても、規則準拠行動が合理的でなければ長期運用は崩れます。したがって本章は、報酬設計、手数料市場、利得比較、攻撃コスト評価を一体として扱います。[^S-CH09-001]
@@ -1342,13 +1284,6 @@ flowchart TD
 早期検知は手戻りを減らします。[^S-CH09-001]
 その効果は長期で大きく出ます。[^S-CH09-001]
 
-## 参考文献
-
-[^S-CH09-001]: Satoshi Nakamoto, "Bitcoin: A Peer-to-Peer Electronic Cash System" (2008). https://bitcoin.org/bitcoin.pdf
-[^S-CH08-001]: Bitcoin.org, "Block Chain — Bitcoin Developer Guide". https://developer.bitcoin.org/devguide/block_chain.html
-[^S-CH10-001]: Pieter Wuille, "BIP 32: Hierarchical Deterministic Wallets" (2012). https://bips.dev/32/
-
-
 # 第10章: 限界と運用上の注意
 
 第9章で、規則準拠を維持するためのインセンティブ設計を確認しました。本章の問いは、誘因設計が整っていても残る限界をどう扱うかです。ここでの結論は単純です。安全性主張は脅威モデル内でのみ有効であり、鍵管理や順序依存リスクはプロトコル健全性と別層で管理しなければなりません。したがって運用では、できることとできないことを先に境界化する必要があります。[^S-CH10-001][^S-CH10-002]
@@ -1464,13 +1399,6 @@ flowchart LR
 ここが運用要点です。[^S-CH10-001]
 継続が品質を決めます。[^S-CH10-001]
 
-## 参考文献
-
-[^S-CH10-001]: Pieter Wuille, "BIP 32: Hierarchical Deterministic Wallets" (2012). https://bips.dev/32/
-[^S-CH10-002]: Ethereum.org, "Maximal extractable value (MEV)". https://ethereum.org/developers/docs/mev
-[^S-OUTRO-001]: IETF, "RFC 9293: Transmission Control Protocol (TCP)" (2022). https://www.rfc-editor.org/rfc/rfc9293
-
-
 # 終章: 何を理解したか
 
 本書の目的は、ブロックチェーンを「暗号資産を発行する技術」として覚えることではなく、「中央裁定者がいない条件で取引順序を共有する技術」として理解することでした。序章から第10章までの議論は、すべてこの中心命題に接続しています。終章では、到達点を再確認し、次に新しい方式を読むときの評価軸を固定します。[^S-INTRO-001][^S-OUTRO-001]
@@ -1550,11 +1478,6 @@ flowchart TD
 加えて、週次見直しでは「最も迷った主張」を一つ選び、保留理由を更新してください。迷いを可視化すると、次回の学習優先度を決めやすくなります。[^S-OUTRO-001]
 この更新習慣を続けることが、終章で定義した自走学習の実装です。[^S-OUTRO-001]
 迷いを記録し続ける姿勢そのものが、判断品質を長期で押し上げます。[^S-OUTRO-001]
-
-## 参考文献
-
-[^S-INTRO-001]: Satoshi Nakamoto, "Bitcoin: A Peer-to-Peer Electronic Cash System" (2008). https://bitcoin.org/bitcoin.pdf
-[^S-OUTRO-001]: IETF, "RFC 9293: Transmission Control Protocol (TCP)" (2022). https://www.rfc-editor.org/rfc/rfc9293
 
 ## 参考文献（脚注）
 
